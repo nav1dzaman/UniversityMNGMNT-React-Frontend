@@ -10,14 +10,31 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@coreui/coreui": "^5.1.1",
+    "@coreui/react": "^5.3.0",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.5",
+    "@mui/material": "^5.16.7",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/x-date-pickers": "^7.12.1",
+    "@mui/x-date-pickers-pro": "^7.12.1",
+    "apexcharts": "^3.51.0",
     "axios": "^1.7.2",
+    "bootstrap": "^5.3.3",
+    "dayjs": "^1.11.12",
+    "framer-motion": "^11.3.19",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
+    "react-date-range": "^2.0.1",
     "react-dom": "^18.3.1",
     "react-pro-sidebar": "^1.1.0",
     "react-router-dom": "^6.24.1",
+    "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
-    "rsuite": "^5.65.1"
+    "rsuite": "^5.69.0",
+    "styled-components": "^6.1.12"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

@@ -17,12 +17,14 @@ import FacultyLogin from './pages/faculty/FacultyLogin.jsx';
 import AdminRoute from './routing/AdminRoute.jsx';
 import StudentRoute from './routing/StudentRoute.jsx';
 import FacultyRoute from './routing/FacultyRoute.jsx';
-function App() {
 
+import { useAuth } from './auth/AuthProvider.jsx';
+function App() {
+  const { loggedIn } = useAuth();
 
   return (
     <>
-   <Header/>
+<Header/>
 
    <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -42,7 +44,9 @@ function App() {
       </Routes>
 
 
-   <Footer/>
+   {/* <Footer/> */}
+   
+
     </>
   )
 }

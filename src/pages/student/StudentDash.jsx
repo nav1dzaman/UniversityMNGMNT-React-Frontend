@@ -1,14 +1,15 @@
 import React from 'react'
 import { useAuth } from '../../auth/AuthProvider';
+import StudentTabs from './StudentTabs';
 
 
 function StudentDash() {
   const {user,loggedIn}=useAuth();
   return (
-    <div>StudentDash
-
+    <div>Welcome to student portal
+  <StudentTabs/>
 <div>
-        {user?.roles}
+        
       </div>
 
 

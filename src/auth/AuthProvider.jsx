@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react"
+import React, { createContext, useState, useContext,useEffect } from "react"
 import { jwtDecode } from "jwt-decode";
 
 
@@ -6,13 +6,34 @@ import { jwtDecode } from "jwt-decode";
 	user: null,
     loggedIn: false,
 	handleLogin: (token) => {},
-	handleLogout: () => {}
+	handleLogout: () => {},
+	token:""
 })
 // const AuthContext=createContext();
 
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
     const [loggedIn,SetloggedIn]=useState(false);
+	const[token,SetToken]=useState("")
+
+
+	useEffect(() => {
+        const storedToken = localStorage.getItem("token")
+        if (storedToken) {
+            try {
+                const decodedUser = jwtDecode(storedToken)
+                setUser(decodedUser)
+                SetToken(storedToken)
+                SetloggedIn(true)
+            } catch (error) {
+                console.error("Failed to decode token:", error)
+                // handleLogout() // Clear invalid token
+            }
+        }
+    }, [])
+
+
+
 
 	const handleLogin = (token) => {
 		console.log(67)
@@ -20,8 +41,9 @@ export const AuthProvider = ({ children }) => {
 		localStorage.setItem("userName", decodedUser.sub)
 		localStorage.setItem("userRole", decodedUser.roles)
 		localStorage.setItem("token", token)
-		console.log(67)
+		console.log(67) 
 		setUser(decodedUser)
+		SetToken(token)
         SetloggedIn(true)
 	}
 
@@ -30,11 +52,12 @@ export const AuthProvider = ({ children }) => {
 		localStorage.removeItem("userRole")
 		localStorage.removeItem("token")
         SetloggedIn(false)
+		SetToken("")
 		setUser(null)
 	}
 
 	return (
-		<AuthContext.Provider value={{ user,loggedIn, handleLogin, handleLogout }}>
+		<AuthContext.Provider value={{ user,loggedIn, handleLogin, handleLogout,token }}>
 			{children}
 		</AuthContext.Provider>
 	)
